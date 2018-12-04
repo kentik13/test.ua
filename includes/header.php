@@ -17,7 +17,7 @@
     <?php
     $categories_q = mysqli_query($connection,"select * from `articles_categories`");
     $categories = array();
-    while ( $cat=mysqli_fetch_assoc($categories))
+    while ( $cat=mysqli_fetch_assoc($categories_q))
     {
         $categories[] = $cat;
     }
@@ -29,7 +29,7 @@
                     <?php foreach ( $categories as $cat)
                     {
                     ?>
-                    <li><a href="/categorie.php?id=<?php echo $cat['id']; ?>"><?php echo $cat['tittle']; ?></a></li>
+                    <li><a href="/articles.php?categorie=<?php echo $cat['id']; ?>"><?php echo $cat['title']; ?></a></li>
 <?php
 }
 ?>
