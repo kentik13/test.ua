@@ -15,16 +15,21 @@
     </div>
 
     <?php
-    $categories = mysqli_query($connection,"select * from `articles_categories`")
+    $categories_q = mysqli_query($connection,"select * from `articles_categories`");
+    $categories = array();
+    while ( $cat=mysqli_fetch_assoc($categories))
+    {
+        $categories[] = $cat;
+    }
     ?>
     <div class="header__bottom">
         <div class="container">
             <nav>
                 <ul>
-                    <?php while ( $cat=mysqli_fetch_assoc($categories))
+                    <?php foreach ( $categories as $cat)
                     {
                     ?>
-                    <li><a href="#"><?php echo $cat['tittle']; ?></a></li>
+                    <li><a href="/categorie.php?id=<?php echo $cat['id']; ?>"><?php echo $cat['tittle']; ?></a></li>
 <?php
 }
 ?>
